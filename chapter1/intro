@@ -1,0 +1,55 @@
+#lang racket
+; function of another function
+
+(define area-rect
+  (lambda (w)
+    (lambda (h)
+      (* w h))))
+
+
+(define double-f
+  (lambda (f)
+    (lambda (z)
+      (* 2 (f z)))))
+
+(define add3
+  (lambda (x)
+    (+ 3 x)))
+
+((lambda (z)
+ (* 2 (add3 z)))
+ 4)
+
+(area-rect 3.0)
+
+(define silly-abs
+  (lambda (x)
+    (let ([negative?  [< x 0]] )
+      (cond
+        (negative?
+         (- 0 x) (displayln "x was negatibe"))
+        (else x)))))
+
+(define silly-rem
+  (lambda (x y)
+    (cond
+      [[< x y] x]
+      [else (silly-rem (- x y) y) ])))
+
+
+(define silly-add
+  (lambda (x y)
+    (cond
+      ([zero? y] x)  
+      (else (add1 (silly-add x (sub1 y)))))))
+
+(silly-add 13 14) 
+
+(silly-rem 122 9)
+
+              
+
+;(silly-abs -5)
+
+;(silly-abs 7)
+

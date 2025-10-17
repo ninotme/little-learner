@@ -1,0 +1,11 @@
+# don't know that files are these 
+*.zo
+
+# temporary files from drRacket
+*~
+\#*
+
+# compiled folder 
+**/compiled
+
+
